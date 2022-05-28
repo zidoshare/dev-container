@@ -1,4 +1,4 @@
-ARG GO_VERSION=1.16
+ARG GO_VERSION=1.18
 
 FROM golang:${GO_VERSION}-buster
 
@@ -40,7 +40,7 @@ RUN chmod +x /tmp/zsh-in-docker.sh && \
     -a 'bindkey "\$terminfo[kcuu1]" history-substring-search-up' \
     -a 'bindkey "\$terminfo[kcud1]" history-substring-search-down'
 
-RUN go get github.com/go-delve/delve/cmd/dlv
+RUN go install github.com/go-delve/delve/cmd/dlv@latest
 
 # Copy local config to p10k zsh
 COPY ./zsh/.p10k.zsh $ROOTHOME/
